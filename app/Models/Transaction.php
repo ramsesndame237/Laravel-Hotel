@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Helpers\Helper;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
 
 class Transaction extends Model
 {
@@ -51,7 +50,7 @@ class Transaction extends Model
     public function getDateDifferenceWithPlural()
     {
         $day = Helper::getDateDifference($this->check_in, $this->check_out);
-        $plural = Str::plural('Day', $day);
+        $plural = Helper::plural('Day', $day);
 
         return $day.' '.$plural;
     }

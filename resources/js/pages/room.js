@@ -31,9 +31,7 @@ $(function () {
                 name: "price",
                 data: "price",
                 render: function (price) {
-                    return `<div>${new Intl.NumberFormat().format(
-                        price
-                    )}</div>`;
+                    return `<div>${formatPrice(price)}</div>`;
                 },
             },
             {

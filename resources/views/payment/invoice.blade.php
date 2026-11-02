@@ -58,7 +58,7 @@
                             <tbody>
                                 <tr class="add">
                                     <td>{{ __('Description') }}</td>
-                                    <td class="text-center">{{ __('Days') }}</td>
+                                    <td class="text-center">{{ __('Days Count') }}</td>
                                     <td class="text-center">{{ __('Room Price / Day') }}</td>
                                     <td class="text-center">{{ __('Total Price') }}</td>
                                 </tr>
@@ -68,9 +68,9 @@
                                     <td class="text-center">{{ $payment->transaction->getDateDifferenceWithPlural() }}
                                     </td>
                                     <td class="text-center">
-                                        {{ Helper::convertToRupiah($payment->transaction->room->price) }}</td>
+                                        {{ Helper::formatPrice($payment->transaction->room->price) }}</td>
                                     <td class="text-center">
-                                        {{ Helper::convertToRupiah($payment->transaction->getTotalPrice()) }}</td>
+                                        {{ Helper::formatPrice($payment->transaction->getTotalPrice()) }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -89,10 +89,10 @@
                                 <tr class="content">
                                     <td></td>
                                     <td class="text-center">
-                                        {{ Helper::convertToRupiah($payment->transaction->getMinimumDownPayment()) }}</td>
-                                    <td class="text-center">{{ Helper::convertToRupiah($payment->price) }}</td>
+                                        {{ Helper::formatPrice($payment->transaction->getMinimumDownPayment()) }}</td>
+                                    <td class="text-center">{{ Helper::formatPrice($payment->price) }}</td>
                                     <td class="text-center">
-                                        {{ $payment->transaction->getTotalPrice() - $payment->transaction->getTotalPayment() <= 0 ? '-' : Helper::convertToRupiah($payment->transaction->getTotalPrice($payment->transaction->room->price, $payment->transaction->check_in, $payment->transaction->check_out) - $payment->transaction->getTotalPayment()) }}
+                                        {{ $payment->transaction->getTotalPrice() - $payment->transaction->getTotalPayment() <= 0 ? '-' : Helper::formatPrice($payment->transaction->getTotalPrice($payment->transaction->room->price, $payment->transaction->check_in, $payment->transaction->check_out) - $payment->transaction->getTotalPayment()) }}
                                     </td>
                                 </tr>
                             </tbody>

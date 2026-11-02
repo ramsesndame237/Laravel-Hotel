@@ -155,7 +155,7 @@
                                                 @if($balance <= 0)
                                                     <span class="text-success fw-medium">{{ __('Paid') }}</span>
                                                 @else
-                                                    <span class="text-danger fw-medium">{{ Helper::convertToRupiah($balance) }}</span>
+                                                    <span class="text-danger fw-medium">{{ Helper::formatPrice($balance) }}</span>
                                                 @endif
                                             </td>
                                             <td>
