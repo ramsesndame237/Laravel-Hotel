@@ -21,8 +21,8 @@
                     <div class="auth-logo">
                         <i class="fas fa-shield-alt text-warning"></i>
                     </div>
-                    <h1 class="auth-title">Confirm Password</h1>
-                    <p class="auth-subtitle">Please confirm your password before continuing</p>
+                    <h1 class="auth-title">{{ __('Confirm Password') }}</h1>
+                    <p class="auth-subtitle">{{ __('Please confirm your password before continuing') }}</p>
                 </div>
 
                 <!-- Confirmation Form -->
@@ -32,7 +32,7 @@
                     <!-- Password Field -->
                     <div class="form-group">
                         <label for="password" class="form-label">
-                            <i class="fas fa-lock me-2"></i>Current Password
+                            <i class="fas fa-lock me-2"></i>{{ __('Current Password') }}
                         </label>
                         <div class="input-wrapper">
                             <input
@@ -42,7 +42,7 @@
                                 name="password"
                                 required
                                 autocomplete="current-password"
-                                placeholder="Enter your current password"
+                                placeholder="{{ __('Enter your current password') }}"
                                 autofocus
                             >
                             <button type="button" class="password-toggle" onclick="togglePassword('password')">
@@ -62,18 +62,18 @@
                         <button type="submit" class="btn btn-primary auth-submit-btn" id="submitBtn">
                             <span class="btn-text">
                                 <i class="fas fa-check me-2"></i>
-                                Confirm Password
+                                {{ __('Confirm Password') }}
                             </span>
                             <span class="btn-loading d-none">
                                 <i class="fas fa-spinner fa-spin me-2"></i>
-                                Confirming...
+                                {{ __('Confirming...') }}
                             </span>
                         </button>
 
                         @if (Route::has('password.request'))
                             <a href="{{ route('password.request') }}" class="btn btn-outline-light auth-secondary-btn">
                                 <i class="fas fa-key me-2"></i>
-                                Forgot Password?
+                                {{ __('Forgot Password?') }}
                             </a>
                         @endif
                     </div>
@@ -82,7 +82,7 @@
                     <div class="auth-links">
                         <a href="{{ url()->previous() }}" class="auth-link">
                             <i class="fas fa-arrow-left me-2"></i>
-                            Go Back
+                            {{ __('Go Back') }}
                         </a>
                     </div>
                 </form>
@@ -92,22 +92,21 @@
                     <div class="security-notice">
                         <div class="notice-header">
                             <i class="fas fa-shield-alt text-warning me-2"></i>
-                            <span>Security Confirmation</span>
+                            <span>{{ __('Security Confirmation') }}</span>
                         </div>
                         <p class="notice-text">
-                            This action requires password confirmation for your security.
-                            Your password will not be stored and is only used for verification.
+                            {{ __('This action requires password confirmation for your security. Your password will not be stored and is only used for verification.') }}
                         </p>
                     </div>
 
                     <div class="help-items">
                         <div class="help-item">
                             <i class="fas fa-clock text-info"></i>
-                            <span>Session will remain active for secure operations</span>
+                            <span>{{ __('Session will remain active for secure operations') }}</span>
                         </div>
                         <div class="help-item">
                             <i class="fas fa-lock text-success"></i>
-                            <span>Your data is protected by encryption</span>
+                            <span>{{ __('Your data is protected by encryption') }}</span>
                         </div>
                     </div>
                 </div>

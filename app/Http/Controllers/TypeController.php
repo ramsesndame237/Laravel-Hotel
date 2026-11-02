@@ -38,7 +38,7 @@ class TypeController extends Controller
         $type = $this->typeRepository->store($request);
 
         return response()->json([
-            'message' => 'success', 'Type '.$type->name.' created',
+            'message' => __('Type :name created', ['name' => $type->name]),
         ]);
     }
 
@@ -58,7 +58,7 @@ class TypeController extends Controller
         $type->update($request->all());
 
         return response()->json([
-            'message' => 'success', 'Type '.$type->name.' udpated!',
+            'message' => __('Type :name updated!', ['name' => $type->name]),
         ]);
     }
 
@@ -68,11 +68,11 @@ class TypeController extends Controller
             $type->delete();
 
             return response()->json([
-                'message' => 'Type '.$type->name.' deleted!',
+                'message' => __('Type :name deleted!', ['name' => $type->name]),
             ]);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Type '.$type->name.' cannot be deleted! Error Code:'.$e->errorInfo[1],
+                'message' => __('Type :name cannot be deleted! Error code: :code', ['name' => $type->name, 'code' => $e->errorInfo[1]]),
             ], 500);
         }
     }

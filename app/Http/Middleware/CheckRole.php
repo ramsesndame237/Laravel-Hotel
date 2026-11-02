@@ -18,6 +18,6 @@ class CheckRole
             return $next($request);
         }
 
-        return redirect()->back()->with('failed', 'You are not authorized');
+        return redirect()->back()->with('failed', __('You are not authorized'));
     }
 }

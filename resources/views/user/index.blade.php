@@ -1,5 +1,5 @@
 @extends('template.master')
-@section('title', 'User')
+@section('title', __('User'))
 @section('content')
     <div class="row">
         <div class="col-lg-6">
@@ -7,7 +7,7 @@
                 <div class="col-lg-6 mb-2">
                     <div class="d-grid gap-2 d-md-block">
                         <a href="{{ route('user.create') }}" class="btn btn-sm shadow-sm myBtn border rounded"
-                            data-bs-toggle="tooltip" data-bs-placement="right" title="Add User">
+                            data-bs-toggle="tooltip" data-bs-placement="right" title="{{ __('Add User') }}">
                             <svg width="25" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -20,9 +20,9 @@
                     <form class="d-flex" method="GET" action="{{ route('user.index') }}">
                         <input type="hidden" name="qc" value="{{ request()->input('qc') }}">
                         <input type="hidden" name="customers" value="{{ request()->input('customers') }}">
-                        <input class="form-control me-2" type="search" placeholder="Search by name" aria-label="Search"
+                        <input class="form-control me-2" type="search" placeholder="{{ __('Search by name') }}" aria-label="{{ __('Search') }}"
                             id="search-user" name="qu" value="{{ request()->input('qu') }}">
-                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                        <button class="btn btn-outline-dark" type="submit">{{ __('Search') }}</button>
                     </form>
                 </div>
             </div>
@@ -35,10 +35,10 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Role</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">{{ __('Name') }}</th>
+                                            <th scope="col">{{ __('Email') }}</th>
+                                            <th scope="col">{{ __('Role') }}</th>
+                                            <th scope="col">{{ __('Action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -53,7 +53,7 @@
                                                 <td>
                                                     <a class="btn btn-light btn-sm rounded shadow-sm border p-0 m-0"
                                                         href="{{ route('user.edit', ['user' => $user->id]) }}"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Edit User">
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Edit User') }}">
                                                         <svg width="25" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -69,7 +69,7 @@
                                                         <div class="btn btn-light btn-sm rounded shadow-sm border p-0 m-0 delete"
                                                             user-id="{{ $user->id }}" user-name="{{ $user->name }}"
                                                             data-bs-toggle="tooltip" user-role="Admin" data-bs-placement="top"
-                                                            title="Delete User">
+                                                            title="{{ __('Delete User') }}">
                                                             <svg width="25" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -80,7 +80,7 @@
                                                     </form>
                                                     <a class="btn btn-light btn-sm rounded shadow-sm border p-0 m-0"
                                                         href="{{ route('user.show', ['user' => $user->id]) }}"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Detail User">
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Detail User') }}">
                                                         <svg width="25" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -93,7 +93,7 @@
                                         @empty
                                             <tr>
                                                 <td colspan="10" class="text-center">
-                                                    There's no data in this table
+                                                    {{ __('There\'s no data in this table') }}
                                                 </td>
                                             </tr>
                                         @endforelse
@@ -102,7 +102,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <h3>User</h3>
+                            <h3>{{ __('User') }}</h3>
                         </div>
                     </div>
                 </div>
@@ -123,9 +123,9 @@
                     <form class="d-flex" method="GET" action="{{ route('user.index') }}">
                         <input type="hidden" name="qu" value="{{ request()->input('qu') }}">
                         <input type="hidden" name="users" value="{{ request()->input('users') }}">
-                        <input class="form-control me-2" type="search" placeholder="Search by name" aria-label="Search"
+                        <input class="form-control me-2" type="search" placeholder="{{ __('Search by name') }}" aria-label="{{ __('Search') }}"
                             id="search-user" name="qc" value="{{ request()->input('qc') }}">
-                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                        <button class="btn btn-outline-dark" type="submit">{{ __('Search') }}</button>
                     </form>
                 </div>
             </div>
@@ -138,10 +138,10 @@
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Email</th>
-                                            <th scope="col">Role</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col">{{ __('Name') }}</th>
+                                            <th scope="col">{{ __('Email') }}</th>
+                                            <th scope="col">{{ __('Role') }}</th>
+                                            <th scope="col">{{ __('Action') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -156,7 +156,7 @@
                                                 <td>
                                                     <a class="btn btn-light btn-sm rounded shadow-sm border p-0 m-0"
                                                         href="{{ route('user.edit', ['user' => $user->id]) }}"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Edit User">
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="{{ __('Edit User') }}">
                                                         <svg width="25" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -172,7 +172,7 @@
                                                         <a class="btn btn-light btn-sm rounded shadow-sm border p-0 m-0 delete"
                                                             href="#" user-id="{{ $user->id }}" user-role="Customer"
                                                             user-name="{{ $user->name }}" data-bs-toggle="tooltip"
-                                                            data-bs-placement="top" title="Delete User">
+                                                            data-bs-placement="top" title="{{ __('Delete User') }}">
                                                             <svg width="25" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -183,7 +183,7 @@
                                                     </form>
                                                     <a class="btn btn-light btn-sm rounded shadow-sm border p-0 m-0 disabled"
                                                         href="/user/detail/{{ $user->id }}" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top" title="Detail User">
+                                                        data-bs-placement="top" title="{{ __('Detail User') }}">
                                                         <svg width="25" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
                                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -196,7 +196,7 @@
                                         @empty
                                             <tr>
                                                 <td colspan="10" class="text-center">
-                                                    There's no data in this table
+                                                    {{ __('There\'s no data in this table') }}
                                                 </td>
                                             </tr>
                                         @endforelse
@@ -205,7 +205,7 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <h3>Customer</h3>
+                            <h3>{{ __('Customer') }}</h3>
                         </div>
                     </div>
                 </div>
@@ -235,12 +235,12 @@
             })
 
             swalWithBootstrapButtons.fire({
-                title: 'Are you sure?',
-                text: user_name + " will be deleted, You won't be able to revert this!",
+                title: @json(__('Are you sure?')),
+                text: user_name + @json(' ' . __('will be deleted, You won\'t be able to revert this!')),
                 icon: 'warning',
                 showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel! ',
+                confirmButtonText: @json(__('Yes, delete it!')),
+                cancelButtonText: @json(__('No, cancel!')),
                 reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {

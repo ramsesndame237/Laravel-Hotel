@@ -10,11 +10,13 @@
             <div class="brand-icon">
                 <i class="fas fa-hotel"></i>
             </div>
-            <span class="brand-text">Laravel Hotel</span>
+            <span class="brand-text">{{ __('Laravel Hotel') }}</span>
         </a>
 
         <!-- Profile & Notifications -->
         <div class="mobile-profile">
+            @include('template.include._language-switcher')
+
             <!-- Notifications -->
             <button class="notification-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fas fa-bell"></i>
@@ -26,9 +28,9 @@
             <!-- Notification Dropdown -->
             <ul class="dropdown-menu dropdown-menu-end shadow-lg" style="width: 300px;">
                 <li class="dropdown-header d-flex justify-content-between align-items-center">
-                    <span class="fw-bold">Notifications</span>
+                    <span class="fw-bold">{{ __('Notifications') }}</span>
                     @if (auth()->user()->unreadNotifications->count() > 0)
-                        <span class="badge bg-primary">{{ auth()->user()->unreadNotifications->count() }} new</span>
+                        <span class="badge bg-primary">{{ auth()->user()->unreadNotifications->count() }} {{ __('new') }}</span>
                     @endif
                 </li>
                 <li><hr class="dropdown-divider"></li>
@@ -58,7 +60,7 @@
                         <li>
                             <div class="dropdown-item text-center text-muted py-3">
                                 <i class="fas fa-bell-slash mb-2"></i>
-                                <div>No new notifications</div>
+                                <div>{{ __('No new notifications') }}</div>
                             </div>
                         </li>
                     @endforelse
@@ -68,7 +70,7 @@
                     <li><hr class="dropdown-divider"></li>
                     <li>
                         <a class="dropdown-item text-center text-primary" href="#">
-                            <small>View all notifications</small>
+                            <small>{{ __('View all notifications') }}</small>
                         </a>
                     </li>
                 @endif
@@ -105,19 +107,19 @@
                     <li>
                         <a class="dropdown-item" href="#">
                             <i class="fas fa-user me-2 text-primary"></i>
-                            View Profile
+                            {{ __('View Profile') }}
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="#">
                             <i class="fas fa-cog me-2 text-secondary"></i>
-                            Account Settings
+                            {{ __('Account Settings') }}
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="#">
                             <i class="fas fa-bell me-2 text-info"></i>
-                            Notification Settings
+                            {{ __('Notification Settings') }}
                         </a>
                     </li>
                     <li><hr class="dropdown-divider"></li>
@@ -125,7 +127,7 @@
                         <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                            onclick="event.preventDefault(); document.getElementById('mobile-logout-form').submit();">
                             <i class="fas fa-sign-out-alt me-2"></i>
-                            Sign Out
+                            {{ __('Sign Out') }}
                         </a>
                         <form id="mobile-logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
@@ -139,7 +141,7 @@
 
 <!-- Mobile Offcanvas Sidebar -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileOffcanvas" aria-labelledby="mobileOffcanvasLabel">
-    <button type="button" class="btn-close offcanvas-close-btn" data-bs-dismiss="offcanvas" aria-label="Close">
+    <button type="button" class="btn-close offcanvas-close-btn" data-bs-dismiss="offcanvas" aria-label="{{ __('Close') }}">
         <i class="fas fa-times"></i>
     </button>
 
@@ -152,14 +154,14 @@
                     <i class="fas fa-hotel"></i>
                 </div>
                 <div class="brand-text">
-                    <h4 class="mb-0">Laravel Hotel</h4>
+                    <h4 class="mb-0">{{ __('Laravel Hotel') }}</h4>
                 </div>
             </div>
 
             <!-- User Profile Section -->
             <div class="sidebar-user">
                 <div class="user-avatar">
-                    <img src="{{ auth()->user()->getAvatar() }}" alt="User Avatar" class="rounded-circle">
+                    <img src="{{ auth()->user()->getAvatar() }}" alt="{{ __('User Avatar') }}" class="rounded-circle">
                 </div>
                 <div class="user-info">
                     <div class="user-name">{{ auth()->user()->name }}</div>
@@ -171,13 +173,13 @@
                             <i class="fas fa-ellipsis-v"></i>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>{{ __('Profile') }}</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>{{ __('Settings') }}</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <i class="fas fa-sign-out-alt me-2"></i>Logout
+                                    <i class="fas fa-sign-out-alt me-2"></i>{{ __('Logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
@@ -193,7 +195,7 @@
                 <div class="notifications-header">
                     <div class="notifications-title">
                         <i class="fas fa-bell me-2"></i>
-                        Notifications
+                        {{ __('Notifications') }}
                         @if (auth()->user()->unreadNotifications->count() > 0)
                             <span class="notification-badge">{{ auth()->user()->unreadNotifications->count() }}</span>
                         @endif
@@ -213,14 +215,14 @@
                     @empty
                         <div class="notification-empty">
                             <i class="fas fa-bell-slash"></i>
-                            <span>No new notifications</span>
+                            <span>{{ __('No new notifications') }}</span>
                         </div>
                     @endforelse
 
                     @if (auth()->user()->unreadNotifications->count() > 3)
                         <div class="notifications-footer">
                             <a href="{{ route('notification.index') }}" class="view-all-notifications">
-                                View all ({{ auth()->user()->unreadNotifications->count() }})
+                                {{ __('View all') }} ({{ auth()->user()->unreadNotifications->count() }})
                             </a>
                         </div>
                     @endif
@@ -231,15 +233,15 @@
             <nav class="sidebar-nav">
                 <!-- Dashboard -->
                 <div class="nav-section">
-                    <div class="nav-section-title">Overview</div>
+                    <div class="nav-section-title">{{ __('Overview') }}</div>
                     <a href="{{ route('dashboard.index') }}"
                        class="nav-item {{ in_array(Route::currentRouteName(), ['dashboard.index', 'chart.dailyGuest']) ? 'active' : '' }}">
                         <div class="nav-icon">
                             <i class="fas fa-chart-pie"></i>
                         </div>
                         <div class="nav-content">
-                            <div class="nav-title">Dashboard</div>
-                            <div class="nav-subtitle">Analytics & Overview</div>
+                            <div class="nav-title">{{ __('Dashboard') }}</div>
+                            <div class="nav-subtitle">{{ __('Analytics & Overview') }}</div>
                         </div>
                     </a>
                 </div>
@@ -247,7 +249,7 @@
                 @if (auth()->user()->role == 'Super' || auth()->user()->role == 'Admin')
                     <!-- Operations -->
                     <div class="nav-section">
-                        <div class="nav-section-title">Operations</div>
+                        <div class="nav-section-title">{{ __('Operations') }}</div>
 
                         <!-- Transactions -->
                         <a href="{{ route('transaction.index') }}"
@@ -256,8 +258,8 @@
                                 <i class="fas fa-credit-card"></i>
                             </div>
                             <div class="nav-content">
-                                <div class="nav-title">Transactions</div>
-                                <div class="nav-subtitle">Bookings & Payments</div>
+                                <div class="nav-title">{{ __('Transactions') }}</div>
+                                <div class="nav-subtitle">{{ __('Bookings & Payments') }}</div>
                             </div>
                         </a>
 
@@ -268,8 +270,8 @@
                                     <i class="fas fa-bed"></i>
                                 </div>
                                 <div class="nav-content">
-                                    <div class="nav-title">Room Management</div>
-                                    <div class="nav-subtitle">Rooms, Types & Status</div>
+                                    <div class="nav-title">{{ __('Room Management') }}</div>
+                                    <div class="nav-subtitle">{{ __('Rooms, Types & Status') }}</div>
                                 </div>
                                 <div class="nav-arrow">
                                     <i class="fas fa-chevron-down"></i>
@@ -278,16 +280,16 @@
                             <div class="collapse {{ in_array(Route::currentRouteName(), ['room.index', 'room.show', 'room.create', 'room.edit', 'type.index', 'type.create', 'type.edit', 'roomstatus.index', 'roomstatus.create', 'roomstatus.edit', 'facility.index', 'facility.create', 'facility.edit']) ? 'show' : '' }} w-100" id="mobileRoomSubmenu">
                                 <div class="nav-submenu">
                                     <a href="{{ route('room.index') }}" class="nav-subitem {{ in_array(Route::currentRouteName(), ['room.index', 'room.show', 'room.create', 'room.edit']) ? 'active' : '' }}">
-                                        <i class="fas fa-door-open me-2"></i>Rooms
+                                        <i class="fas fa-door-open me-2"></i>{{ __('Rooms') }}
                                     </a>
                                     <a href="{{ route('type.index') }}" class="nav-subitem {{ in_array(Route::currentRouteName(), ['type.index', 'type.create', 'type.edit']) ? 'active' : '' }}">
-                                        <i class="fas fa-list me-2"></i>Room Types
+                                        <i class="fas fa-list me-2"></i>{{ __('Room Types') }}
                                     </a>
                                     <a href="{{ route('roomstatus.index') }}" class="nav-subitem {{ in_array(Route::currentRouteName(), ['roomstatus.index', 'roomstatus.create', 'roomstatus.edit']) ? 'active' : '' }}">
-                                        <i class="fas fa-toggle-on me-2"></i>Room Status
+                                        <i class="fas fa-toggle-on me-2"></i>{{ __('Room Status') }}
                                     </a>
                                     <a href="{{ route('facility.index') }}" class="nav-subitem {{ in_array(Route::currentRouteName(), ['facility.index', 'facility.create', 'facility.edit']) ? 'active' : '' }}">
-                                        <i class="fas fa-concierge-bell me-2"></i>Facilities
+                                        <i class="fas fa-concierge-bell me-2"></i>{{ __('Facilities') }}
                                     </a>
                                 </div>
                             </div>
@@ -300,8 +302,8 @@
                                     <i class="fas fa-users"></i>
                                 </div>
                                 <div class="nav-content">
-                                    <div class="nav-title">User Management</div>
-                                    <div class="nav-subtitle">Customers & Staff</div>
+                                    <div class="nav-title">{{ __('User Management') }}</div>
+                                    <div class="nav-subtitle">{{ __('Customers & Staff') }}</div>
                                 </div>
                                 <div class="nav-arrow">
                                     <i class="fas fa-chevron-down"></i>
@@ -310,11 +312,11 @@
                             <div class="collapse {{ in_array(Route::currentRouteName(), ['customer.index', 'customer.create', 'customer.edit', 'user.index', 'user.create', 'user.edit']) ? 'show' : '' }} w-100" id="mobileUserSubmenu">
                                 <div class="nav-submenu">
                                     <a href="{{ route('customer.index') }}" class="nav-subitem {{ in_array(Route::currentRouteName(), ['customer.index', 'customer.create', 'customer.edit']) ? 'active' : '' }}">
-                                        <i class="fas fa-user-friends me-2"></i>Customers
+                                        <i class="fas fa-user-friends me-2"></i>{{ __('Customers') }}
                                     </a>
                                     @if (auth()->user()->role == 'Super')
                                         <a href="{{ route('user.index') }}" class="nav-subitem {{ in_array(Route::currentRouteName(), ['user.index', 'user.create', 'user.edit']) ? 'active' : '' }}">
-                                            <i class="fas fa-user-cog me-2"></i>Staff Users
+                                            <i class="fas fa-user-cog me-2"></i>{{ __('Staff Users') }}
                                         </a>
                                     @endif
                                 </div>
@@ -324,30 +326,30 @@
 
                     <!-- Analytics -->
                     <div class="nav-section">
-                        <div class="nav-section-title">Analytics</div>
+                        <div class="nav-section-title">{{ __('Analytics') }}</div>
 
                         <a href="#" class="nav-item">
                             <div class="nav-icon">
                                 <i class="fas fa-chart-bar"></i>
                             </div>
                             <div class="nav-content">
-                                <div class="nav-title">Reports</div>
-                                <div class="nav-subtitle">Financial & Analytics</div>
+                                <div class="nav-title">{{ __('Reports') }}</div>
+                                <div class="nav-subtitle">{{ __('Financial & Analytics') }}</div>
                             </div>
                         </a>
                     </div>
 
                     <!-- Administration -->
                     <div class="nav-section">
-                        <div class="nav-section-title">Administration</div>
+                        <div class="nav-section-title">{{ __('Administration') }}</div>
 
                         <a href="#" class="nav-item">
                             <div class="nav-icon">
                                 <i class="fas fa-cogs"></i>
                             </div>
                             <div class="nav-content">
-                                <div class="nav-title">Settings</div>
-                                <div class="nav-subtitle">System Configuration</div>
+                                <div class="nav-title">{{ __('Settings') }}</div>
+                                <div class="nav-subtitle">{{ __('System Configuration') }}</div>
                             </div>
                         </a>
                     </div>
@@ -358,7 +360,7 @@
             <div class="sidebar-footer">
                 <a href="{{ route('transaction.reservation.createIdentity') }}" class="btn btn-primary w-100 quick-action-btn">
                     <i class="fas fa-plus me-2"></i>
-                    New Reservation
+                    {{ __('New Reservation') }}
                 </a>
             </div>
         </div>

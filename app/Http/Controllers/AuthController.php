@@ -19,10 +19,10 @@ class AuthController extends Controller
         if (Auth::attempt($request->only('email', 'password'))) {
             activity()->causedBy(auth()->user())->log('User logged into the portal'); // Log activity message
 
-            return redirect('dashboard')->with('success', 'Welcome '.auth()->user()->name);
+            return redirect('dashboard')->with('success', __('Welcome :name', ['name' => auth()->user()->name]));
         }
 
-        return redirect('login')->with('failed', 'Incorrect email / password');
+        return redirect('login')->with('failed', __('Incorrect email / password'));
     }
 
     public function logout()
@@ -30,7 +30,7 @@ class AuthController extends Controller
         $name = auth()->user()->name;
         Auth::logout();
 
-        return redirect('login')->with('success', 'Logout success, goodbye '.$name);
+        return redirect('login')->with('success', __('Logout success, goodbye :name', ['name' => $name]));
     }
 
     public function forgotPassword(ForgotPasswordRequest $request)

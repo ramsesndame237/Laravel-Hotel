@@ -25,7 +25,7 @@ class ImageController extends Controller
             'url' => $lastFileName,
         ]);
 
-        return redirect()->route('room.show', ['room' => $room->id])->with('success', 'Image upload successfully!');
+        return redirect()->route('room.show', ['room' => $room->id])->with('success', __('Image uploaded successfully!'));
     }
 
     public function destroy(Image $image)
@@ -36,6 +36,6 @@ class ImageController extends Controller
         }
         $image->delete();
 
-        return redirect()->back()->with('success', 'Image '.$image->url.' has been deleted!');
+        return redirect()->back()->with('success', __('Image :name has been deleted!', ['name' => $image->url]));
     }
 }

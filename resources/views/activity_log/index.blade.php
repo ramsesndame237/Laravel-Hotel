@@ -1,16 +1,16 @@
 @extends('template.master')
-@section('title', 'User')
+@section('title', __('User'))
 @section('content')
     <div class="container">
-        <h1>User Activity Log</h1>
+        <h1>{{ __('User Activity Log') }}</h1>
 
         <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Description</th>
-                    <th>By</th>
-                    <th>Logged At</th>
+                    <th>{{ __('Description') }}</th>
+                    <th>{{ __('By') }}</th>
+                    <th>{{ __('Logged At') }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,16 +26,16 @@
         </table>
 
         <!-- Custom pagination links with only Previous, Next, and Numbers -->
-        <nav aria-label="Page navigation">
+        <nav aria-label="{{ __('Page navigation') }}">
             <ul class="pagination">
                 <!-- Previous Link -->
                 @if ($activities->onFirstPage())
                     <li class="page-item disabled">
-                        <span class="page-link">Previous</span>
+                        <span class="page-link">{{ __('Previous') }}</span>
                     </li>
                 @else
                     <li class="page-item">
-                        <a class="page-link" href="{{ $activities->previousPageUrl() }}" rel="prev">Previous</a>
+                        <a class="page-link" href="{{ $activities->previousPageUrl() }}" rel="prev">{{ __('Previous') }}</a>
                     </li>
                 @endif
 
@@ -49,17 +49,17 @@
                 <!-- Next Link -->
                 @if ($activities->hasMorePages())
                     <li class="page-item">
-                        <a class="page-link" href="{{ $activities->nextPageUrl() }}" rel="next">Next</a>
+                        <a class="page-link" href="{{ $activities->nextPageUrl() }}" rel="next">{{ __('Next') }}</a>
                     </li>
                 @else
                     <li class="page-item disabled">
-                        <span class="page-link">Next</span>
+                        <span class="page-link">{{ __('Next') }}</span>
                     </li>
                 @endif
             </ul>
         </nav>
 
         <!-- Option to view all logs -->
-        <a href="{{ route('activity-log.all') }}" class="btn btn-primary">See All</a>
+        <a href="{{ route('activity-log.all') }}" class="btn btn-primary">{{ __('See All') }}</a>
     </div>
 @endsection

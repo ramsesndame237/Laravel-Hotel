@@ -1,16 +1,16 @@
 @extends('template.master')
-@section('title', 'User')
+@section('title', __('User'))
 @section('content')
     <div class="container">
-        <h1>User Activity Log</h1>
+        <h1>{{ __('User Activity Log') }}</h1>
 
         <table class="table">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Description</th>
-                    <th>By</th>
-                    <th>Logged At</th>
+                    <th>{{ __('Description') }}</th>
+                    <th>{{ __('By') }}</th>
+                    <th>{{ __('Logged At') }}</th>
                 </tr>
             </thead>
             <tbody>

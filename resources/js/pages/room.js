@@ -47,7 +47,7 @@ $(function () {
                     return `
                         <button class="btn btn-light btn-sm rounded shadow-sm border"
                             data-action="edit-room" data-room-id="${roomId}"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit room">
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="${__("Edit room")}">
                             <i class="fas fa-edit"></i>
                         </button>
                         <form class="btn btn-sm delete-room" method="POST"
@@ -55,14 +55,14 @@ $(function () {
                             action="/room/${roomId}">
                             <a class="btn btn-light btn-sm rounded shadow-sm border delete"
                                 href="#" room-id="${roomId}" room-role="room" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="Delete room">
+                                data-bs-placement="top" title="${__("Delete room")}">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </form>
                         <a class="btn btn-light btn-sm rounded shadow-sm border"
                             href="/room/${roomId}"
                             data-bs-toggle="tooltip" data-bs-placement="top"
-                            title="Room detail">
+                            title="${__("Room detail")}">
                             <i class="fas fa-info-circle"></i>
                         </a>
 
@@ -93,12 +93,12 @@ $(function () {
 
             swalWithBootstrapButtons
                 .fire({
-                    title: "Are you sure?",
-                    text: "Room will be deleted, You won't be able to revert this!",
+                    title: __("Are you sure?"),
+                    text: __("Room will be deleted, You won't be able to revert this!"),
                     icon: "warning",
                     showCancelButton: true,
-                    confirmButtonText: "Yes, delete it!",
-                    cancelButtonText: "No, cancel! ",
+                    confirmButtonText: __("Yes, delete it!"),
+                    cancelButtonText: __("No, cancel!"),
                     reverseButtons: true,
                 })
                 .then((result) => {
@@ -110,12 +110,12 @@ $(function () {
         .on("click", "#add-button", async function () {
             modal.show();
 
-            $("#main-modal .modal-body").html(`Fetching data`);
+            $("#main-modal .modal-body").html(__("Fetching data"));
 
             const response = await $.get(`/room/create`);
             if (!response) return;
 
-            $("#main-modal .modal-title").text("Create new room");
+            $("#main-modal .modal-title").text(__("Create new room"));
             $("#main-modal .modal-body").html(response.view);
             $(".select2").select2();
         })
@@ -155,7 +155,7 @@ $(function () {
                     console.log(e);
                     Swal.fire({
                         icon: "error",
-                        title: "Oops...",
+                        title: __("Oops..."),
                         text: e.responseJSON.message,
                     });
                     CustomHelper.errorHandlerForm(e);
@@ -167,14 +167,14 @@ $(function () {
         .on("click", '[data-action="edit-room"]', async function () {
             modal.show();
 
-            $("#main-modal .modal-body").html(`Fetching data`);
+            $("#main-modal .modal-body").html(__("Fetching data"));
 
             const roomId = $(this).data("room-id");
 
             const response = await $.get(`/room/${roomId}/edit`);
             if (!response) return;
 
-            $("#main-modal .modal-title").text("Edit room");
+            $("#main-modal .modal-title").text(__("Edit room"));
             $("#main-modal .modal-body").html(response.view);
             $(".select2").select2();
         })

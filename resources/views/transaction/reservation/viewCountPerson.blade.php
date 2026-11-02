@@ -1,5 +1,5 @@
 @extends('template.master')
-@section('title', 'Count Person')
+@section('title', __('Count Person'))
 @section('head')
     <link rel="stylesheet" href="{{ asset('style/css/progress-indication.css') }}">
 @endsection
@@ -16,7 +16,7 @@
                                     action="{{ route('transaction.reservation.chooseRoom', ['customer' => $customer->id]) }}">
                                     <div class="col-md-12">
                                         <label for="count_person" class="form-label">
-                                            How many person?
+                                            {{ __('How many person?') }}
                                         </label>
                                         <input type="text" class="form-control @error('count_person') is-invalid @enderror"
                                             id="
@@ -27,7 +27,7 @@
                                             </div>
                                         @enderror
                                         <label for="check_in" class="form-label">
-                                            From
+                                            {{ __('From') }}
                                         </label>
                                         <input type="date" class="form-control @error('check_in') is-invalid @enderror" id="
                                                 check_in" name="check_in" value="{{ old('check_in') }}">
@@ -37,7 +37,7 @@
                                             </div>
                                         @enderror
                                         <label for="check_out" class="form-label">
-                                            Until
+                                            {{ __('Until') }}
                                         </label>
                                         <input type="date" class="form-control @error('check_out') is-invalid @enderror" id="
                                                 check_out" name="check_out" value="{{ old('check_out') }}">
@@ -48,7 +48,7 @@
                                         @enderror
                                     </div>
                                     <div class="col-12">
-                                        <button type="submit" class="btn myBtn shadow-sm border float-end">Next</button>
+                                        <button type="submit" class="btn myBtn shadow-sm border float-end">{{ __('Next') }}</button>
                                     </div>
                                 </form>
                             </div>

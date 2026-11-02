@@ -1,5 +1,5 @@
 @extends('template.master')
-@section('title', 'Room Status')
+@section('title', __('Room Status'))
 @section('content')
     <div class="container-fluid">
         <!-- Add Status Button -->
@@ -7,7 +7,7 @@
             <div class="col-12">
                 <button id="add-button" type="button" class="add-item-btn">
                     <i class="fas fa-plus"></i>
-                    Add New Status
+                    {{ __('Add New Status') }}
                 </button>
             </div>
         </div>
@@ -16,8 +16,8 @@
         <div class="professional-table-container">
             <!-- Table Header -->
             <div class="table-header">
-                <h4><i class="fas fa-toggle-on me-2"></i>Room Status Management</h4>
-                <p>Manage room availability statuses and their codes</p>
+                <h4><i class="fas fa-toggle-on me-2"></i>{{ __('Room Status Management') }}</h4>
+                <p>{{ __('Manage room availability statuses and their codes') }}</p>
             </div>
 
             <!-- Table -->
@@ -29,16 +29,16 @@
                                 <i class="fas fa-hashtag me-1"></i>#
                             </th>
                             <th scope="col">
-                                <i class="fas fa-tag me-1"></i>Name
+                                <i class="fas fa-tag me-1"></i>{{ __('Name') }}
                             </th>
                             <th scope="col">
-                                <i class="fas fa-code me-1"></i>Code
+                                <i class="fas fa-code me-1"></i>{{ __('Code') }}
                             </th>
                             <th scope="col">
-                                <i class="fas fa-info-circle me-1"></i>Information
+                                <i class="fas fa-info-circle me-1"></i>{{ __('Information') }}
                             </th>
                             <th scope="col">
-                                <i class="fas fa-cog me-1"></i>Actions
+                                <i class="fas fa-cog me-1"></i>{{ __('Actions') }}
                             </th>
                         </tr>
                     </thead>
@@ -50,7 +50,7 @@
 
             <!-- Table Footer -->
             <div class="table-footer">
-                <h3><i class="fas fa-toggle-on me-2"></i>Room Status</h3>
+                <h3><i class="fas fa-toggle-on me-2"></i>{{ __('Room Status') }}</h3>
             </div>
         </div>
     </div>

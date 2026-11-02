@@ -9,11 +9,11 @@
         <!-- Brand -->
         <div class="navbar-brand fw-bold text-gradient me-auto">
             <i class="fas fa-hotel me-2"></i>
-            Hotel Admin
+            {{ __('Hotel Admin') }}
         </div>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -22,10 +22,10 @@
 
                 <!-- Quick Actions (New) -->
                 <div class="btn-group me-3" role="group">
-                    <button type="button" class="btn btn-hotel-primary btn-sm" data-bs-toggle="tooltip" title="New Reservation">
+                    <button type="button" class="btn btn-hotel-primary btn-sm" data-bs-toggle="tooltip" title="{{ __('New Reservation') }}">
                         <i class="fas fa-plus"></i>
                     </button>
-                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="tooltip" title="Search">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-toggle="tooltip" title="{{ __('Search') }}">
                         <i class="fas fa-search"></i>
                     </button>
                 </div>
@@ -39,15 +39,15 @@
                         @if (auth()->user()->unreadNotifications->count() > 0)
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                 {{ auth()->user()->unreadNotifications->count() }}
-                                <span class="visually-hidden">unread messages</span>
+                                <span class="visually-hidden">{{ __('unread messages') }}</span>
                             </span>
                         @endif
                     </div>
                     <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="dropdownMenuButton2" style="width: 320px;">
                         <li class="dropdown-header d-flex justify-content-between align-items-center">
-                            <span class="fw-bold">Notifications</span>
+                            <span class="fw-bold">{{ __('Notifications') }}</span>
                             @if (auth()->user()->unreadNotifications->count() > 0)
-                                <span class="badge bg-primary">{{ auth()->user()->unreadNotifications->count() }} new</span>
+                                <span class="badge bg-primary">{{ auth()->user()->unreadNotifications->count() }} {{ __('new') }}</span>
                             @endif
                         </li>
                         <li><hr class="dropdown-divider"></li>
@@ -75,7 +75,7 @@
                                 <li>
                                     <div class="dropdown-item-text text-center py-4">
                                         <i class="fas fa-bell-slash text-muted mb-2" style="font-size: 2rem;"></i>
-                                        <p class="text-muted mb-0">No new notifications</p>
+                                        <p class="text-muted mb-0">{{ __('No new notifications') }}</p>
                                     </div>
                                 </li>
                             @endforelse
@@ -85,10 +85,10 @@
                             <li><hr class="dropdown-divider"></li>
                             <li class="d-flex justify-content-between px-3 py-2">
                                 <a href="{{ route('notification.markAllAsRead') }}" class="btn btn-sm btn-outline-primary">
-                                    Mark all read
+                                    {{ __('Mark all read') }}
                                 </a>
                                 <a href="{{ route('notification.index') }}" class="btn btn-sm btn-primary">
-                                    View All
+                                    {{ __('View All') }}
                                 </a>
                             </li>
                         @endif
@@ -101,7 +101,7 @@
                          data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
                         <img src="{{ auth()->user()->getAvatar() }}"
                              class="rounded-circle me-2"
-                             width="32" height="32" alt="Profile">
+                             width="32" height="32" alt="{{ __('Profile') }}">
                         <div class="d-none d-md-block text-start">
                             <div class="fw-medium" style="font-size: 0.875rem;">{{ auth()->user()->name }}</div>
                             <div class="text-muted" style="font-size: 0.75rem;">{{ auth()->user()->role }}</div>
@@ -113,7 +113,7 @@
                             <div class="d-flex align-items-center">
                                 <img src="{{ auth()->user()->getAvatar() }}"
                                      class="rounded-circle me-3"
-                                     width="40" height="40" alt="Profile">
+                                     width="40" height="40" alt="{{ __('Profile') }}">
                                 <div>
                                     <div class="fw-medium">{{ auth()->user()->name }}</div>
                                     <div class="text-muted small">{{ auth()->user()->email }}</div>
@@ -125,20 +125,20 @@
                             <a class="dropdown-item d-flex align-items-center"
                                href="{{ route('user.show', ['user' => auth()->user()->id]) }}">
                                 <i class="fas fa-user me-3 text-primary"></i>
-                                View Profile
+                                {{ __('View Profile') }}
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item d-flex align-items-center"
                                href="{{ route('activity-log.index') }}">
                                 <i class="fas fa-history me-3 text-info"></i>
-                                Activity Log
+                                {{ __('Activity Log') }}
                             </a>
                         </li>
                         <li>
                             <a class="dropdown-item d-flex align-items-center" href="#">
                                 <i class="fas fa-cog me-3 text-secondary"></i>
-                                Settings
+                                {{ __('Settings') }}
                             </a>
                         </li>
                         <li><hr class="dropdown-divider"></li>
@@ -147,7 +147,7 @@
                                 @csrf
                                 <button class="dropdown-item d-flex align-items-center text-danger" type="submit">
                                     <i class="fas fa-sign-out-alt me-3"></i>
-                                    Logout
+                                    {{ __('Logout') }}
                                 </button>
                             </form>
                         </li>

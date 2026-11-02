@@ -53,7 +53,7 @@ class Helper
 
     public static function plural($value, $count)
     {
-        return Str::plural($value, $count);
+        return __(Str::plural($value, $count));
     }
 
     public static function getColorByDay($day)

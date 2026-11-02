@@ -38,7 +38,7 @@ class UserController extends Controller
         activity()->causedBy(auth()->user())->log('User '.$request->name.' created');
         $user = $this->userRepository->store($request);
 
-        return redirect()->route('user.index')->with('success', 'User '.$user->name.' created');
+        return redirect()->route('user.index')->with('success', __('User :name created', ['name' => $user->name]));
     }
 
     public function show(User $user)
@@ -73,7 +73,7 @@ class UserController extends Controller
             ]);
         }
 
-        return redirect()->route('user.index')->with('success', 'User '.$user->name.' udpated!');
+        return redirect()->route('user.index')->with('success', __('User :name updated!', ['name' => $user->name]));
     }
 
     public function destroy(User $user)
@@ -82,9 +82,9 @@ class UserController extends Controller
         try {
             $user->delete();
 
-            return redirect()->route('user.index')->with('success', 'User '.$user->name.' deleted!');
+            return redirect()->route('user.index')->with('success', __('User :name deleted!', ['name' => $user->name]));
         } catch (\Exception $e) {
-            return redirect()->route('user.index')->with('failed', 'Customer '.$user->name.' cannot be deleted! Error Code:'.$e->errorInfo[1]);
+            return redirect()->route('user.index')->with('failed', __('User :name cannot be deleted! Error code: :code', ['name' => $user->name, 'code' => $e->errorInfo[1]]));
         }
     }
 }

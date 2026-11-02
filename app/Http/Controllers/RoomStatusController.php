@@ -34,7 +34,7 @@ class RoomStatusController extends Controller
         $roomstatus = RoomStatus::create($request->all());
 
         return response()->json([
-            'message' => 'success', "Room $roomstatus->name created",
+            'message' => __('Room status :name created', ['name' => $roomstatus->name]),
         ]);
     }
 
@@ -54,7 +54,7 @@ class RoomStatusController extends Controller
         $roomstatus->update($request->all());
 
         return response()->json([
-            'message' => 'success', "Room $roomstatus->name udpated",
+            'message' => __('Room status :name updated!', ['name' => $roomstatus->name]),
         ]);
     }
 
@@ -64,11 +64,11 @@ class RoomStatusController extends Controller
             $roomstatus->delete();
 
             return response()->json([
-                'message' => "Room $roomstatus->name deleted!",
+                'message' => __('Room status :name deleted!', ['name' => $roomstatus->name]),
             ]);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => "Type {$roomstatus->name} cannot be deleted! Error Code: {$e->errorInfo[1]}",
+                'message' => __('Room status :name cannot be deleted! Error code: :code', ['name' => $roomstatus->name, 'code' => $e->errorInfo[1]]),
             ], 500);
         }
     }

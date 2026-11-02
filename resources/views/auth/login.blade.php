@@ -1,5 +1,5 @@
 @extends('template.auth')
-@section('title', 'Login')
+@section('title', __('Login'))
 @section('content')
     <style>
         body {
@@ -290,8 +290,8 @@
                 <div class="logo-container">
                     <i class="fas fa-hotel"></i>
                 </div>
-                <h4 class="mb-2 fw-bold">Laravel Hotel</h4>
-                <p class="mb-0 opacity-75">Welcome back! Please sign in to continue.</p>
+                <h4 class="mb-2 fw-bold">{{ __('Laravel Hotel') }}</h4>
+                <p class="mb-0 opacity-75">{{ __('Welcome back! Please sign in to continue.') }}</p>
             </div>
 
             <div class="login-body">
@@ -301,10 +301,10 @@
                     <div class="form-floating">
                         <input type="email" id="email" name="email"
                             class="form-control @error('email') is-invalid @enderror"
-                            placeholder="Enter your email"
+                            placeholder="{{ __('Enter your email') }}"
                             value="{{ old('email') }}" required autofocus>
                         <label for="email">
-                            <i class="fas fa-envelope me-2"></i>Email Address
+                            <i class="fas fa-envelope me-2"></i>{{ __('Email Address') }}
                         </label>
                         @error('email')
                             <div class="invalid-feedback">
@@ -316,9 +316,9 @@
                     <div class="form-floating">
                         <input type="password" id="password" name="password"
                             class="form-control @error('password') is-invalid @enderror"
-                            placeholder="Enter your password" required>
+                            placeholder="{{ __('Enter your password') }}" required>
                         <label for="password">
-                            <i class="fas fa-lock me-2"></i>Password
+                            <i class="fas fa-lock me-2"></i>{{ __('Password') }}
                         </label>
                         @error('password')
                             <div class="invalid-feedback">
@@ -330,34 +330,34 @@
                     <div class="form-check mb-3">
                         <input class="form-check-input" type="checkbox" id="remember" name="remember">
                         <label class="form-check-label" for="remember">
-                            Remember me for 30 days
+                            {{ __('Remember me for 30 days') }}
                         </label>
                     </div>
 
                     <button id="btn_submit" class="btn btn-login text-white" type="submit">
                         <span id="text_submit">
                             <i class="fas fa-sign-in-alt me-2"></i>
-                            Sign In to Dashboard
+                            {{ __('Sign In to Dashboard') }}
                         </span>
                         <div class="btn-spinner"></div>
                     </button>
 
                     <div class="divider">
-                        <span>Need help?</span>
+                        <span>{{ __('Need help?') }}</span>
                     </div>
 
                     <div class="text-center">
                         <a href="/forgot-password" class="forgot-link">
                             <i class="fas fa-key me-1"></i>
-                            Forgot your password?
+                            {{ __('Forgot your password?') }}
                         </a>
                     </div>
                 </form>
 
                 <div class="demo-info">
-                    <h6><i class="fas fa-info-circle me-2"></i>Demo Account</h6>
-                    <p><strong>Email:</strong> wailantirajoh@gmail.com</p>
-                    <p><strong>Password:</strong> wailan</p>
+                    <h6><i class="fas fa-info-circle me-2"></i>{{ __('Demo Account') }}</h6>
+                    <p><strong>{{ __('Email:') }}</strong> wailantirajoh@gmail.com</p>
+                    <p><strong>{{ __('Password:') }}</strong> wailan</p>
                 </div>
             </div>
         </div>

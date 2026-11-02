@@ -1,5 +1,5 @@
 @extends('template.auth')
-@section('title', 'Register - Hotel Management System')
+@section('title', __('Register - Hotel Management System'))
 
 @section('content')
     <div class="auth-container">
@@ -22,8 +22,8 @@
                     <div class="auth-logo">
                         <i class="fas fa-user-plus text-success"></i>
                     </div>
-                    <h1 class="auth-title">Create Account</h1>
-                    <p class="auth-subtitle">Join our hotel management system</p>
+                    <h1 class="auth-title">{{ __('Create Account') }}</h1>
+                    <p class="auth-subtitle">{{ __('Join our hotel management system') }}</p>
                 </div>
 
                 <!-- Registration Form -->
@@ -33,7 +33,7 @@
                     <!-- Name Field -->
                     <div class="form-group">
                         <label for="name" class="form-label">
-                            <i class="fas fa-user me-2"></i>Full Name
+                            <i class="fas fa-user me-2"></i>{{ __('Full Name') }}
                         </label>
                         <div class="input-wrapper">
                             <input
@@ -45,7 +45,7 @@
                                 required
                                 autocomplete="name"
                                 autofocus
-                                placeholder="Enter your full name"
+                                placeholder="{{ __('Enter your full name') }}"
                             >
                             @error('name')
                                 <div class="invalid-feedback">
@@ -59,7 +59,7 @@
                     <!-- Email Field -->
                     <div class="form-group">
                         <label for="email" class="form-label">
-                            <i class="fas fa-envelope me-2"></i>Email Address
+                            <i class="fas fa-envelope me-2"></i>{{ __('Email Address') }}
                         </label>
                         <div class="input-wrapper">
                             <input
@@ -70,7 +70,7 @@
                                 value="{{ old('email') }}"
                                 required
                                 autocomplete="email"
-                                placeholder="Enter your email address"
+                                placeholder="{{ __('Enter your email address') }}"
                             >
                             @error('email')
                                 <div class="invalid-feedback">
@@ -84,7 +84,7 @@
                     <!-- Password Field -->
                     <div class="form-group">
                         <label for="password" class="form-label">
-                            <i class="fas fa-lock me-2"></i>Password
+                            <i class="fas fa-lock me-2"></i>{{ __('Password') }}
                         </label>
                         <div class="input-wrapper">
                             <input
@@ -94,7 +94,7 @@
                                 name="password"
                                 required
                                 autocomplete="new-password"
-                                placeholder="Create a password"
+                                placeholder="{{ __('Create a password') }}"
                                 minlength="8"
                             >
                             <button type="button" class="password-toggle" onclick="togglePassword('password')">
@@ -112,14 +112,14 @@
                             <div class="strength-bar">
                                 <div class="strength-fill" id="strength-fill"></div>
                             </div>
-                            <div class="strength-text" id="strength-text">Password strength</div>
+                            <div class="strength-text" id="strength-text">{{ __('Password strength') }}</div>
                         </div>
                     </div>
 
                     <!-- Confirm Password Field -->
                     <div class="form-group">
                         <label for="password-confirm" class="form-label">
-                            <i class="fas fa-shield-alt me-2"></i>Confirm Password
+                            <i class="fas fa-shield-alt me-2"></i>{{ __('Confirm Password') }}
                         </label>
                         <div class="input-wrapper">
                             <input
@@ -129,7 +129,7 @@
                                 name="password_confirmation"
                                 required
                                 autocomplete="new-password"
-                                placeholder="Confirm your password"
+                                placeholder="{{ __('Confirm your password') }}"
                             >
                             <button type="button" class="password-toggle" onclick="togglePassword('password-confirm')">
                                 <i class="fas fa-eye" id="password-confirm-toggle-icon"></i>
@@ -138,7 +138,7 @@
                         <!-- Password Match Indicator -->
                         <div class="password-match" id="password-match" style="display: none;">
                             <i class="fas fa-check-circle text-success me-1"></i>
-                            <span>Passwords match</span>
+                            <span>{{ __('Passwords match') }}</span>
                         </div>
                     </div>
 
@@ -153,8 +153,8 @@
                                 required
                             >
                             <label class="form-check-label" for="terms">
-                                I agree to the <a href="#" class="text-primary">Terms of Service</a> and
-                                <a href="#" class="text-primary">Privacy Policy</a>
+                                {{ __('I agree to the') }} <a href="#" class="text-primary">{{ __('Terms of Service') }}</a> {{ __('and') }}
+                                <a href="#" class="text-primary">{{ __('Privacy Policy') }}</a>
                             </label>
                         </div>
                     </div>
@@ -163,20 +163,20 @@
                     <button type="submit" class="btn btn-success auth-submit-btn" id="submitBtn">
                         <span class="btn-text">
                             <i class="fas fa-user-plus me-2"></i>
-                            Create Account
+                            {{ __('Create Account') }}
                         </span>
                         <span class="btn-loading d-none">
                             <i class="fas fa-spinner fa-spin me-2"></i>
-                            Creating Account...
+                            {{ __('Creating Account...') }}
                         </span>
                     </button>
 
                     <!-- Login Link -->
                     <div class="auth-links">
-                        <span class="text-muted">Already have an account?</span>
+                        <span class="text-muted">{{ __('Already have an account?') }}</span>
                         <a href="{{ route('login') }}" class="auth-link">
                             <i class="fas fa-sign-in-alt me-2"></i>
-                            Sign In
+                            {{ __('Sign In') }}
                         </a>
                     </div>
                 </form>
@@ -185,24 +185,24 @@
                 <div class="auth-help">
                     <h6 class="text-white mb-3">
                         <i class="fas fa-info-circle me-2"></i>
-                        Password Requirements
+                        {{ __('Password Requirements') }}
                     </h6>
                     <div class="requirement-list">
                         <div class="requirement-item" id="req-length">
                             <i class="fas fa-circle requirement-icon"></i>
-                            <span>At least 8 characters</span>
+                            <span>{{ __('At least 8 characters') }}</span>
                         </div>
                         <div class="requirement-item" id="req-uppercase">
                             <i class="fas fa-circle requirement-icon"></i>
-                            <span>One uppercase letter</span>
+                            <span>{{ __('One uppercase letter') }}</span>
                         </div>
                         <div class="requirement-item" id="req-lowercase">
                             <i class="fas fa-circle requirement-icon"></i>
-                            <span>One lowercase letter</span>
+                            <span>{{ __('One lowercase letter') }}</span>
                         </div>
                         <div class="requirement-item" id="req-number">
                             <i class="fas fa-circle requirement-icon"></i>
-                            <span>One number</span>
+                            <span>{{ __('One number') }}</span>
                         </div>
                     </div>
                 </div>
@@ -388,23 +388,23 @@
 
             if (score === 0) {
                 strengthFill.style.background = 'transparent';
-                strengthText.textContent = 'Password strength';
+                strengthText.textContent = @json(__('Password strength'));
                 strengthText.style.color = 'rgba(255, 255, 255, 0.7)';
             } else if (score < 2) {
                 strengthFill.style.background = '#dc3545';
-                strengthText.textContent = 'Weak password';
+                strengthText.textContent = @json(__('Weak password'));
                 strengthText.style.color = '#dc3545';
             } else if (score < 3) {
                 strengthFill.style.background = '#ffc107';
-                strengthText.textContent = 'Fair password';
+                strengthText.textContent = @json(__('Fair password'));
                 strengthText.style.color = '#ffc107';
             } else if (score < 4) {
                 strengthFill.style.background = '#fd7e14';
-                strengthText.textContent = 'Good password';
+                strengthText.textContent = @json(__('Good password'));
                 strengthText.style.color = '#fd7e14';
             } else {
                 strengthFill.style.background = '#28a745';
-                strengthText.textContent = 'Strong password';
+                strengthText.textContent = @json(__('Strong password'));
                 strengthText.style.color = '#28a745';
             }
         }
@@ -418,11 +418,11 @@
             if (confirmPassword.length > 0) {
                 if (password === confirmPassword) {
                     matchIndicator.style.display = 'block';
-                    matchIndicator.innerHTML = '<i class="fas fa-check-circle text-success me-1"></i><span>Passwords match</span>';
+                    matchIndicator.innerHTML = '<i class="fas fa-check-circle text-success me-1"></i><span>' + @json(__('Passwords match')) + '</span>';
                     matchIndicator.style.color = '#28a745';
                 } else {
                     matchIndicator.style.display = 'block';
-                    matchIndicator.innerHTML = '<i class="fas fa-times-circle text-danger me-1"></i><span>Passwords do not match</span>';
+                    matchIndicator.innerHTML = '<i class="fas fa-times-circle text-danger me-1"></i><span>' + @json(__('Passwords do not match')) + '</span>';
                     matchIndicator.style.color = '#dc3545';
                 }
             } else {

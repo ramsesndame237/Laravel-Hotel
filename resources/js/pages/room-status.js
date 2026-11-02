@@ -36,7 +36,7 @@ $(function() {
                     return `
                         <button class="btn btn-light btn-sm rounded shadow-sm border"
                             data-action="edit-roomstatus" data-roomstatus-id="${roomstatusId}"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit roomstatus">
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="${__("Edit roomstatus")}">
                             <i class="fas fa-edit"></i>
                         </button>
                         <form class="btn btn-sm delete-roomstatus" method="POST"
@@ -45,7 +45,7 @@ $(function() {
                             <input type="hidden" name="_method" value="DELETE">
                             <a class="btn btn-light btn-sm rounded shadow-sm border delete"
                                 href="#" roomstatus-id="${roomstatusId}" roomstatus-role="roomstatus" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="Delete roomstatus">
+                                data-bs-placement="top" title="${__("Delete roomstatus")}">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </form>
@@ -75,12 +75,12 @@ $(function() {
         })
 
         swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "Type will be deleted, You won't be able to revert this!",
+            title: __("Are you sure?"),
+            text: __("Type will be deleted, You won't be able to revert this!"),
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel! ',
+            confirmButtonText: __("Yes, delete it!"),
+            cancelButtonText: __("No, cancel!"),
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
@@ -90,12 +90,12 @@ $(function() {
     }).on('click', '#add-button', async function() {
         modal.show()
 
-        $('#main-modal .modal-body').html(`Fetching data`)
+        $('#main-modal .modal-body').html(__("Fetching data"))
 
         const response = await $.get(`/roomstatus/create`);
         if (!response) return
 
-        $('#main-modal .modal-title').text('Create new roomstatus')
+        $('#main-modal .modal-title').text(__("Create new roomstatus"))
         $('#main-modal .modal-body').html(response.view)
         $('.select2').select2();
     }).on('click', '#btn-modal-save', function() {
@@ -131,7 +131,7 @@ $(function() {
                 console.log(e)
                 Swal.fire({
                     icon: 'error',
-                    title: 'Oops...',
+                    title: __("Oops..."),
                     text: e.responseJSON.message,
                 })
                 CustomHelper.errorHandlerForm(e)
@@ -142,7 +142,7 @@ $(function() {
     }).on('click', '[data-action="edit-roomstatus"]', async function() {
         modal.show()
 
-        $('#main-modal .modal-body').html(`Fetching data`)
+        $('#main-modal .modal-body').html(__("Fetching data"))
 
         const roomstatusId = $(this).data('roomstatus-id')
 
