@@ -125,7 +125,7 @@ $(function () {
 
     charts.init();
 
-    window.Echo.channel("dashboard").listen(".dashboard.event", (e) => {
+    window.Echo?.channel("dashboard").listen(".dashboard.event", (e) => {
         charts.ajaxGetdailyGuestPerMonthData();
         // reloadJs("style/js/guestsChart.js");
         toastr.warning(e.message, "Hello");

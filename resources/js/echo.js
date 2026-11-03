@@ -3,7 +3,8 @@ import Echo from "laravel-echo";
 import Pusher from "pusher-js";
 window.Pusher = Pusher;
 
-window.Echo = new Echo({
+// Realtime is optional: skip Echo when no Reverb key is configured (e.g. free hosting).
+window.Echo = !import.meta.env.VITE_REVERB_APP_KEY ? null : new Echo({
     broadcaster: "reverb",
     key: import.meta.env.VITE_REVERB_APP_KEY,
     wsHost: import.meta.env.VITE_REVERB_HOST,

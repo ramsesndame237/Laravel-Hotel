@@ -18,9 +18,9 @@ class UserSeeder extends Seeder
     {
         // User::factory(5)->create();
         User::create([
-            'name' => 'Wailan Tirajoh',
-            'email' => 'wailantirajoh@gmail.com',
-            'password' => Hash::make('wailan'),
+            'name' => env('ADMIN_NAME', 'Wailan Tirajoh'),
+            'email' => env('ADMIN_EMAIL', 'wailantirajoh@gmail.com'),
+            'password' => Hash::make(env('ADMIN_PASSWORD', 'wailan')),
             'role' => 'Super',
             'random_key' => Str::random(60),
         ]);
