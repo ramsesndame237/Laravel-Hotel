@@ -7,9 +7,9 @@ use Illuminate\Support\Str;
 
 class Helper
 {
-    public static function convertToRupiah($price)
+    public static function formatPrice($price)
     {
-        return 'Rp. '.number_format($price, 2, ',', '.');
+        return number_format((float) $price, 0, ',', ' ').' FCFA';
     }
 
     public static function thisMonth()

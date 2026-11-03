@@ -38,7 +38,7 @@
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="room_price" name="room_price"
                                             placeholder="col-form-label"
-                                            value="{{ Helper::convertToRupiah($room->price) }}" readonly>
+                                            value="{{ Helper::formatPrice($room->price) }}" readonly>
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" id="total_price" name="total_price"
                                                 placeholder="col-form-label"
-                                                value="{{ Helper::convertToRupiah(Helper::getTotalPayment($dayDifference, $room->price)) }} "
+                                                value="{{ Helper::formatPrice(Helper::getTotalPayment($dayDifference, $room->price)) }} "
                                                 readonly>
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" id="minimum_dp" name="minimum_dp"
                                                 placeholder="col-form-label"
-                                                value="{{ Helper::convertToRupiah($downPayment) }} " readonly>
+                                                value="{{ Helper::formatPrice($downPayment) }} " readonly>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -166,10 +166,8 @@
 @endsection
 @section('footer')
 <script>
-    $('#downPayment').keyup(function() {
-        $('#showPaymentType').text('Rp. ' + parseFloat($(this).val(), 10).toFixed(2).replace(
-                /(\d)(?=(\d{3})+\.)/g, "$1.")
-            .toString());
+    document.getElementById('downPayment').addEventListener('input', function() {
+        document.getElementById('showPaymentType').textContent = window.formatPrice(this.value);
     });
 </script>
 @endsection

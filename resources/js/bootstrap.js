@@ -17,6 +17,10 @@ window.__ = (key, replace = {}) => {
     return text;
 };
 
+/** Format an amount in FCFA (no decimals), e.g. 450000 -> "450 000 FCFA". */
+window.formatPrice = (amount) =>
+    `${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(Number(amount) || 0)} FCFA`;
+
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This

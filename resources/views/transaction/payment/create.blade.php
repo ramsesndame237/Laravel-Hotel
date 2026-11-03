@@ -30,7 +30,7 @@
                             <label class=" col-sm-2 col-form-label">{{ __('Room Price') }}</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"
-                                    value="{{ Helper::convertToRupiah($transaction->room->price) }}" readonly>
+                                    value="{{ Helper::formatPrice($transaction->room->price) }}" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -45,7 +45,7 @@
                             <label class="col-sm-2 col-form-label">{{ __('Total Price') }}</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"
-                                    value="{{ Helper::convertToRupiah($transaction->getTotalPrice($transaction->room->price, $transaction->check_in, $transaction->check_out)) }}"
+                                    value="{{ Helper::formatPrice($transaction->getTotalPrice($transaction->room->price, $transaction->check_in, $transaction->check_out)) }}"
                                     readonly>
                             </div>
                         </div>
@@ -53,14 +53,14 @@
                             <label class="col-sm-2 col-form-label">{{ __('Paid Off') }}</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"
-                                    value="{{ Helper::convertToRupiah($transaction->getTotalPayment()) }}" readonly>
+                                    value="{{ Helper::formatPrice($transaction->getTotalPayment()) }}" readonly>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <label class="col-sm-2 col-form-label">{{ __('Insufficient') }}</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control"
-                                    value="{{ Helper::convertToRupiah($transaction->getTotalPrice($transaction->room->price, $transaction->check_in, $transaction->check_out) - $transaction->getTotalPayment()) }}"
+                                    value="{{ Helper::formatPrice($transaction->getTotalPrice($transaction->room->price, $transaction->check_in, $transaction->check_out) - $transaction->getTotalPayment()) }}"
                                     readonly>
                             </div>
                         </div>
@@ -147,10 +147,8 @@
 @endsection
 @section('footer')
 <script>
-    $('#payment').keyup(function() {
-        $('#showPaymentType').text('Rp. ' + parseFloat($(this).val(), 10).toFixed(2).replace(
-                /(\d)(?=(\d{3})+\.)/g, "$1,")
-            .toString());
+    document.getElementById('payment').addEventListener('input', function() {
+        document.getElementById('showPaymentType').textContent = window.formatPrice(this.value);
     });
 
 </script>
