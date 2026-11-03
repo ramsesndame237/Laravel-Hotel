@@ -21,8 +21,8 @@
                     <div class="auth-logo">
                         <i class="fas fa-hotel text-primary"></i>
                     </div>
-                    <h1 class="auth-title">Reset Password</h1>
-                    <p class="auth-subtitle">Enter your email to receive reset link</p>
+                    <h1 class="auth-title">{{ __('Reset Password') }}</h1>
+                    <p class="auth-subtitle">{{ __('Enter your email to receive reset link') }}</p>
                 </div>
 
                 <!-- Status Message -->
@@ -40,7 +40,7 @@
                     <!-- Email Field -->
                     <div class="form-group">
                         <label for="email" class="form-label">
-                            <i class="fas fa-envelope me-2"></i>Email Address
+                            <i class="fas fa-envelope me-2"></i>{{ __('Email Address') }}
                         </label>
                         <div class="input-wrapper">
                             <input
@@ -52,7 +52,7 @@
                                 required
                                 autocomplete="email"
                                 autofocus
-                                placeholder="Enter your email address"
+                                placeholder="{{ __('Enter your email address') }}"
                             >
                             @error('email')
                                 <div class="invalid-feedback">
@@ -67,11 +67,11 @@
                     <button type="submit" class="btn btn-primary auth-submit-btn" id="submitBtn">
                         <span class="btn-text">
                             <i class="fas fa-paper-plane me-2"></i>
-                            Send Reset Link
+                            {{ __('Send Reset Link') }}
                         </span>
                         <span class="btn-loading d-none">
                             <i class="fas fa-spinner fa-spin me-2"></i>
-                            Sending...
+                            {{ __('Sending...') }}
                         </span>
                     </button>
 
@@ -79,7 +79,7 @@
                     <div class="auth-links">
                         <a href="{{ route('login') }}" class="auth-link">
                             <i class="fas fa-arrow-left me-2"></i>
-                            Back to Login
+                            {{ __('Back to Login') }}
                         </a>
                     </div>
                 </form>
@@ -88,11 +88,11 @@
                 <div class="auth-help">
                     <div class="help-item">
                         <i class="fas fa-info-circle text-info"></i>
-                        <span>Enter the email address associated with your account</span>
+                        <span>{{ __('Enter the email address associated with your account') }}</span>
                     </div>
                     <div class="help-item">
                         <i class="fas fa-clock text-warning"></i>
-                        <span>Reset link will expire in 60 minutes</span>
+                        <span>{{ __('Reset link will expire in 60 minutes') }}</span>
                     </div>
                 </div>
             </div>

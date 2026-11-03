@@ -1,5 +1,5 @@
 @extends('template.master')
-@section('title', 'Facility')
+@section('title', __('Facility'))
 @section('content')
 
 @endsection
@@ -19,12 +19,12 @@
         })
 
         swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "Room number " + room_name + " will be deleted, You won't be able to revert this!",
+            title: @json(__('Are you sure?')),
+            text: @json(__('Room number') . ' ') + room_name + @json(' ' . __('will be deleted, You won\'t be able to revert this!')),
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel! ',
+            confirmButtonText: @json(__('Yes, delete it!')),
+            cancelButtonText: @json(__('No, cancel!')),
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {

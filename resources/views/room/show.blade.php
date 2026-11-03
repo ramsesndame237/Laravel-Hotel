@@ -1,5 +1,5 @@
 @extends('template.master')
-@section('title', 'Room')
+@section('title', __('Room'))
 @section('content')
     <div class="row">
         <div class="col-md-3">
@@ -70,7 +70,7 @@
             @else
             <div class="card">
                 <div class="card-body">
-                    <h4>Currently Empty</h4>
+                    <h4>{{ __('Currently Empty') }}</h4>
                 </div>
             </div>
             @endif
@@ -83,7 +83,7 @@
                             <h3>{{ $room->number }} </h3>
                             <button type="button" class="btn btn-sm shadow-sm myBtn border rounded" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
-                                Upload Image
+                                {{ __('Upload Image') }}
                             </button>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                                     <div class="row">
                                         <div class="col-lg-6">
                                             <p>
-                                                Capacity: {{ $room->capacity }}
+                                                {{ __('Capacity:') }} {{ $room->capacity }}
                                             </p>
                                         </div>
                                     </div>
@@ -123,7 +123,7 @@
                                             @method('DELETE')
                                             @csrf
                                             <button type="submit"
-                                                class="btn btn-sm shadow-sm myBtn border rounded">Delete</button>
+                                                class="btn btn-sm shadow-sm myBtn border rounded">{{ __('Delete') }}</button>
                                         </form>
                                     </div>
                                 </div>
@@ -134,7 +134,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <h4>Theres no image for this room</h4>
+                            <h4>{{ __('Theres no image for this room') }}</h4>
                         </div>
                     </div>
                 </div>
@@ -147,8 +147,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Upload Image</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title" id="exampleModalLabel">{{ __('Upload Image') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
                 </div>
                 <div class="modal-body">
                     <form action="{{ route('image.store', ['room' => $room->id]) }}" method="POST"
@@ -156,7 +156,7 @@
                         @csrf
                         <div class="input-group mb-3">
                             <input type="file" class="form-control" name="image" id="inputGroupFile02">
-                            <button class="input-group-text" type="submit" for="inputGroupFile02">Upload</button>
+                            <button class="input-group-text" type="submit" for="inputGroupFile02">{{ __('Upload') }}</button>
                         </div>
                     </form>
                 </div>

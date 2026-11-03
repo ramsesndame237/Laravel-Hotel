@@ -1,5 +1,5 @@
 @extends('template.master')
-@section('title', 'User')
+@section('title', __('User'))
 @section('content')
     <div class="container">
         <div class="card">

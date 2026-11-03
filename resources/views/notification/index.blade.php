@@ -1,5 +1,5 @@
 @extends('template.master')
-@section('title', 'Notification')
+@section('title', __('Notification'))
 @section('head')
 <link rel="stylesheet" href="{{ asset('style/css/notification.css') }}">
 @endsection
@@ -7,7 +7,7 @@
     <div class="page">
         <div class="timelines">
             <div class="timeline__group">
-                <span class="timeline__year time" aria-hidden="true">Unread</span>
+                <span class="timeline__year time" aria-hidden="true">{{ __('Unread') }}</span>
                 <div class="timeline__cards">
                     @forelse (auth()->user()->unreadNotifications as $notification)
                         <div class="timeline__card card">
@@ -18,20 +18,20 @@
                             </header>
                             <div class="card__content">
                                 <p>{{ $notification->data['message'] }}</p>
-                                <a class="btn btn-sm shadow-sm myBtn border rounded" href="{{ $notification->data['url'] }}"> See Detail</a>
+                                <a class="btn btn-sm shadow-sm myBtn border rounded" href="{{ $notification->data['url'] }}"> {{ __('See Detail') }}</a>
                             </div>
                         </div>
                     @empty
                     <div class="timeline__card card">
                         <div class="card__content">
-                            <p>There's no new unread notification</p>
+                            <p>{{ __('There\'s no new unread notification') }}</p>
                         </div>
                     </div>
                     @endforelse
                 </div>
             </div>
             <div class="timeline__group">
-                <span class="timeline__year time" aria-hidden="true">Read</span>
+                <span class="timeline__year time" aria-hidden="true">{{ __('Read') }}</span>
                 <div class="timeline__cards">
                     @forelse (auth()->user()->readNotifications as $notification)
                         <div class="timeline__card card">
@@ -42,13 +42,13 @@
                             </header>
                             <div class="card__content">
                                 <p>{{ $notification->data['message'] }}</p>
-                                <a class="btn btn-sm shadow-sm myBtn border rounded mt-2 float-end" href="{{ $notification->data['url'] }}"> See Detail</a>
+                                <a class="btn btn-sm shadow-sm myBtn border rounded mt-2 float-end" href="{{ $notification->data['url'] }}"> {{ __('See Detail') }}</a>
                             </div>
                         </div>
                     @empty
                     <div class="timeline__card card">
                         <div class="card__content">
-                            <p>There's no notification</p>
+                            <p>{{ __('There\'s no notification') }}</p>
                         </div>
                     </div>
                     @endforelse

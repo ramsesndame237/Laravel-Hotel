@@ -9,7 +9,7 @@ class EventController extends Controller
 {
     public function sendEvent()
     {
-        $message = 'Reservation added';
+        $message = __('Reservation added');
         $superAdmins = User::where('role', 'Super')->get();
         foreach ($superAdmins as $superAdmin) {
             event(new NewReservationEvent($message, $superAdmin));

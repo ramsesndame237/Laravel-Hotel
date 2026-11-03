@@ -21,15 +21,15 @@
                     <div class="auth-logo">
                         <i class="fas fa-envelope-circle-check text-info"></i>
                     </div>
-                    <h1 class="auth-title">Verify Email Address</h1>
-                    <p class="auth-subtitle">Check your inbox for verification link</p>
+                    <h1 class="auth-title">{{ __('Verify Email Address') }}</h1>
+                    <p class="auth-subtitle">{{ __('Check your inbox for verification link') }}</p>
                 </div>
 
                 <!-- Success Message -->
                 @if (session('resent'))
                     <div class="alert alert-success auth-alert" role="alert">
                         <i class="fas fa-check-circle me-2"></i>
-                        A fresh verification link has been sent to your email address.
+                        {{ __('A fresh verification link has been sent to your email address.') }}
                     </div>
                 @endif
 
@@ -40,8 +40,8 @@
                             <i class="fas fa-mail-bulk text-primary"></i>
                         </div>
                         <div class="info-content">
-                            <h6>Email Sent</h6>
-                            <p>We've sent a verification link to your email address. Please check your inbox and click the link to verify your account.</p>
+                            <h6>{{ __('Email Sent') }}</h6>
+                            <p>{{ __('We\'ve sent a verification link to your email address. Please check your inbox and click the link to verify your account.') }}</p>
                         </div>
                     </div>
 
@@ -49,22 +49,22 @@
                         <div class="step">
                             <div class="step-number">1</div>
                             <div class="step-content">
-                                <strong>Check your email</strong>
-                                <span>Look for our verification email</span>
+                                <strong>{{ __('Check your email') }}</strong>
+                                <span>{{ __('Look for our verification email') }}</span>
                             </div>
                         </div>
                         <div class="step">
                             <div class="step-number">2</div>
                             <div class="step-content">
-                                <strong>Click the link</strong>
-                                <span>Follow the verification link in the email</span>
+                                <strong>{{ __('Click the link') }}</strong>
+                                <span>{{ __('Follow the verification link in the email') }}</span>
                             </div>
                         </div>
                         <div class="step">
                             <div class="step-number">3</div>
                             <div class="step-content">
-                                <strong>Start using the system</strong>
-                                <span>Access your hotel management dashboard</span>
+                                <strong>{{ __('Start using the system') }}</strong>
+                                <span>{{ __('Access your hotel management dashboard') }}</span>
                             </div>
                         </div>
                     </div>
@@ -77,11 +77,11 @@
                         <button type="submit" class="btn btn-primary auth-submit-btn" id="resendBtn">
                             <span class="btn-text">
                                 <i class="fas fa-paper-plane me-2"></i>
-                                Resend Verification Email
+                                {{ __('Resend Verification Email') }}
                             </span>
                             <span class="btn-loading d-none">
                                 <i class="fas fa-spinner fa-spin me-2"></i>
-                                Sending...
+                                {{ __('Sending...') }}
                             </span>
                         </button>
                     </form>
@@ -89,7 +89,7 @@
                     <a href="{{ route('logout') }}" class="btn btn-outline-light auth-secondary-btn"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fas fa-sign-out-alt me-2"></i>
-                        Use Different Account
+                        {{ __('Use Different Account') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -101,29 +101,29 @@
                 <div class="auth-help">
                     <div class="help-header">
                         <i class="fas fa-question-circle me-2"></i>
-                        <span>Need Help?</span>
+                        <span>{{ __('Need Help?') }}</span>
                     </div>
 
                     <div class="help-items">
                         <div class="help-item">
                             <i class="fas fa-search text-warning"></i>
-                            <span>Check your spam/junk folder if you don't see the email</span>
+                            <span>{{ __('Check your spam/junk folder if you don\'t see the email') }}</span>
                         </div>
                         <div class="help-item">
                             <i class="fas fa-clock text-info"></i>
-                            <span>Verification links expire after 60 minutes</span>
+                            <span>{{ __('Verification links expire after 60 minutes') }}</span>
                         </div>
                         <div class="help-item">
                             <i class="fas fa-envelope text-success"></i>
-                            <span>Make sure your email address is correct</span>
+                            <span>{{ __('Make sure your email address is correct') }}</span>
                         </div>
                     </div>
 
                     <div class="contact-support">
-                        <p class="mb-2">Still having trouble?</p>
+                        <p class="mb-2">{{ __('Still having trouble?') }}</p>
                         <a href="mailto:support@hotelmanagement.com" class="support-link">
                             <i class="fas fa-headset me-2"></i>
-                            Contact Support
+                            {{ __('Contact Support') }}
                         </a>
                     </div>
                 </div>

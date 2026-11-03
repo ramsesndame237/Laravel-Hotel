@@ -6,6 +6,18 @@ import toastr from "toastr";
 import axios from "axios";
 
 /**
+ * Translate a string with the current locale's JSON file (injected by the layout),
+ * mirroring Laravel's __() including ":placeholder" replacements.
+ */
+window.__ = (key, replace = {}) => {
+    let text = (window.translations || {})[key] ?? key;
+    for (const [name, value] of Object.entries(replace)) {
+        text = text.replaceAll(`:${name}`, value);
+    }
+    return text;
+};
+
+/**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
@@ -73,6 +85,21 @@ import axios from "axios";
     };
 
     await Promise.all([import("datatables.net"), import("datatables.net-bs5")]);
+
+    $.extend(true, $.fn.dataTable.defaults, {
+        language: {
+            search: __("Search:"),
+            lengthMenu: __("Show _MENU_ entries"),
+            info: __("Showing _START_ to _END_ of _TOTAL_ entries"),
+            infoEmpty: __("Showing 0 to 0 of 0 entries"),
+            infoFiltered: __("(filtered from _MAX_ total entries)"),
+            emptyTable: __("No data available in table"),
+            zeroRecords: __("No matching records found"),
+            processing: __("Processing..."),
+            loadingRecords: __("Loading..."),
+            paginate: { previous: __("Previous"), next: __("Next") },
+        },
+    });
 
     await Promise.all([
         import("./echo"),

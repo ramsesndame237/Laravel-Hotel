@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="utf-8">
@@ -319,11 +319,15 @@
 </head>
 
 <body>
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1050;">
+        @include('template.include._language-switcher')
+    </div>
     <main>
         @yield('content')
     </main>
 
     <!-- Vite Scripts -->
+    @include('template.include._translations')
     @vite('resources/js/app.js')
 
     <!-- Additional Scripts -->

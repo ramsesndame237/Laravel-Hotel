@@ -32,7 +32,7 @@ $(function() {
                     return `
                         <button class="btn btn-light btn-sm rounded shadow-sm border"
                             data-action="edit-type" data-type-id="${typeId}"
-                            data-bs-toggle="tooltip" data-bs-placement="top" title="Edit type">
+                            data-bs-toggle="tooltip" data-bs-placement="top" title="${__("Edit type")}">
                             <i class="fas fa-edit"></i>
                         </button>
                         <form class="btn btn-sm delete-type" method="POST"
@@ -41,7 +41,7 @@ $(function() {
                             <input type="hidden" name="_method" value="DELETE">
                             <a class="btn btn-light btn-sm rounded shadow-sm border delete"
                                 href="#" type-id="${typeId}" type-role="type" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="Delete type">
+                                data-bs-placement="top" title="${__("Delete type")}">
                                 <i class="fas fa-trash-alt"></i>
                             </a>
                         </form>
@@ -71,12 +71,12 @@ $(function() {
         })
 
         swalWithBootstrapButtons.fire({
-            title: 'Are you sure?',
-            text: "Type will be deleted, You won't be able to revert this!",
+            title: __("Are you sure?"),
+            text: __("Type will be deleted, You won't be able to revert this!"),
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'No, cancel! ',
+            confirmButtonText: __("Yes, delete it!"),
+            cancelButtonText: __("No, cancel!"),
             reverseButtons: true
         }).then((result) => {
             if (result.isConfirmed) {
@@ -86,12 +86,12 @@ $(function() {
     }).on('click', '#add-button', async function() {
         modal.show()
 
-        $('#main-modal .modal-body').html(`Fetching data`)
+        $('#main-modal .modal-body').html(__("Fetching data"))
 
         const response = await $.get(`/type/create`);
         if (!response) return
 
-        $('#main-modal .modal-title').text('Create new type')
+        $('#main-modal .modal-title').text(__("Create new type"))
         $('#main-modal .modal-body').html(response.view)
         $('.select2').select2();
     }).on('click', '#btn-modal-save', function() {
@@ -127,7 +127,7 @@ $(function() {
                 console.log(e)
                 Swal.fire({
                     icon: 'error',
-                    title: 'Oops...',
+                    title: __("Oops..."),
                     text: e.responseJSON.message,
                 })
                 CustomHelper.errorHandlerForm(e)
@@ -138,14 +138,14 @@ $(function() {
     }).on('click', '[data-action="edit-type"]', async function() {
         modal.show()
 
-        $('#main-modal .modal-body').html(`Fetching data`)
+        $('#main-modal .modal-body').html(__("Fetching data"))
 
         const typeId = $(this).data('type-id')
 
         const response = await $.get(`/type/${typeId}/edit`);
         if (!response) return
 
-        $('#main-modal .modal-title').text('Edit type')
+        $('#main-modal .modal-title').text(__("Edit type"))
         $('#main-modal .modal-body').html(response.view)
         $('.select2').select2();
     }).on('submit', '.delete-type', async function(e) {

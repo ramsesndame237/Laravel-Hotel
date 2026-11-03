@@ -46,7 +46,7 @@ class TransactionRoomReservationController extends Controller
 
         return redirect()
             ->route('transaction.reservation.viewCountPerson', ['customer' => $customer->id])
-            ->with('success', 'Customer '.$customer->name.' created!');
+            ->with('success', __('Customer :name created', ['name' => $customer->name]));
     }
 
     public function viewCountPerson(Customer $customer)
@@ -109,7 +109,7 @@ class TransactionRoomReservationController extends Controller
         $occupiedRoomIdInArray = $occupiedRoomId->toArray();
 
         if (in_array($room->id, $occupiedRoomIdInArray)) {
-            return redirect()->back()->with('failed', 'Sorry, room '.$room->number.' already occupied');
+            return redirect()->back()->with('failed', __('Sorry, room :number already occupied', ['number' => $room->number]));
         }
 
         $transaction = $transactionRepository->store($request, $customer, $room);
@@ -119,7 +119,7 @@ class TransactionRoomReservationController extends Controller
         $superAdmins = User::where('role', 'Super')->get();
 
         foreach ($superAdmins as $superAdmin) {
-            $message = 'Reservation added by '.$customer->name;
+            $message = __('Reservation added by :name', ['name' => $customer->name]);
             event(new NewReservationEvent($message, $superAdmin));
             $superAdmin->notify(new NewRoomReservationDownPayment($transaction, $payment));
         }
@@ -127,7 +127,7 @@ class TransactionRoomReservationController extends Controller
         event(new RefreshDashboardEvent('Someone reserved a room'));
 
         return redirect()->route('transaction.index')
-            ->with('success', 'Room '.$room->number.' has been reservated by '.$customer->name);
+            ->with('success', __('Room :number has been reserved by :name', ['number' => $room->number, 'name' => $customer->name]));
     }
 
     private function getOccupiedRoomID($stayFrom, $stayUntil)

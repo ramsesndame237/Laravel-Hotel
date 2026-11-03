@@ -56,7 +56,7 @@ class RoomController extends Controller
         $room = Room::create($request->all());
 
         return response()->json([
-            'message' => 'Room '.$room->number.' created',
+            'message' => __('Room :number created', ['number' => $room->number]),
         ]);
     }
 
@@ -94,7 +94,7 @@ class RoomController extends Controller
         $room->update($request->all());
 
         return response()->json([
-            'message' => 'Room '.$room->number.' udpated!',
+            'message' => __('Room :number updated!', ['number' => $room->number]),
         ]);
     }
 
@@ -111,11 +111,11 @@ class RoomController extends Controller
             }
 
             return response()->json([
-                'message' => 'Room number '.$room->number.' deleted!',
+                'message' => __('Room :number deleted!', ['number' => $room->number]),
             ]);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Customer '.$room->number.' cannot be deleted! Error Code:'.$e->errorInfo[1],
+                'message' => __('Room :number cannot be deleted! Error code: :code', ['number' => $room->number, 'code' => $e->errorInfo[1]]),
             ], 500);
         }
     }

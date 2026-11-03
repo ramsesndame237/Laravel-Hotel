@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <!-- Required meta tags -->
@@ -11,7 +11,7 @@
     <link rel="icon" href="{{ asset('img/logo/sip.png') }}">
     {{-- style --}}
     @vite('resources/sass/app.scss')
-    <title>@yield('title') - Hotel Admin</title>
+    <title>@yield('title') {{ __('- Hotel Admin') }}</title>
     @yield('head')
 </head>
 
@@ -23,14 +23,14 @@
                 <div class="modal-content border-0 shadow-lg" style="border-radius: 12px;">
                     <div class="modal-header bg-light border-0">
                         <h1 class="modal-title fs-5 fw-bold" id="main-modalLabel"></h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('Close') }}"></button>
                     </div>
                     <div class="modal-body">
                     </div>
                     <div class="modal-footer border-0 bg-light">
                         <button id="btn-modal-close" type="button" class="btn btn-outline-secondary"
-                            data-bs-dismiss="modal">Close</button>
-                        <button id="btn-modal-save" type="button" class="btn btn-hotel-primary">Save</button>
+                            data-bs-dismiss="modal">{{ __('Close') }}</button>
+                        <button id="btn-modal-save" type="button" class="btn btn-hotel-primary">{{ __('Save') }}</button>
                     </div>
                 </div>
             </div>
@@ -52,6 +52,7 @@
         </div>
     </main>
 
+    @include('template.include._translations')
     @vite('resources/js/app.js')
 
     <!-- Initialize Tooltips -->

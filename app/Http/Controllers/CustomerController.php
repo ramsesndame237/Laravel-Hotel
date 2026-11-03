@@ -31,7 +31,7 @@ class CustomerController extends Controller
     {
         $customer = $this->customerRepository->store($request);
 
-        return redirect('customer')->with('success', 'Customer '.$customer->name.' created');
+        return redirect('customer')->with('success', __('Customer :name created', ['name' => $customer->name]));
     }
 
     public function show(Customer $customer)
@@ -48,7 +48,7 @@ class CustomerController extends Controller
     {
         $customer->update($request->all());
 
-        return redirect('customer')->with('success', 'customer '.$customer->name.' udpated!');
+        return redirect('customer')->with('success', __('Customer :name updated!', ['name' => $customer->name]));
     }
 
     public function destroy(Customer $customer, ImageRepositoryInterface $imageRepository)
@@ -64,14 +64,14 @@ class CustomerController extends Controller
                 $imageRepository->destroy($avatar_path);
             }
 
-            return redirect('customer')->with('success', 'Customer '.$customer->name.' deleted!');
+            return redirect('customer')->with('success', __('Customer :name deleted!', ['name' => $customer->name]));
         } catch (\Exception $e) {
             $errorMessage = '';
             if ($e->errorInfo[0] == '23000') {
                 $errorMessage = 'Data still connected to other tables';
             }
 
-            return redirect('customer')->with('failed', 'Customer '.$customer->name.' cannot be deleted! '.$errorMessage);
+            return redirect('customer')->with('failed', __('Customer :name cannot be deleted!', ['name' => $customer->name]).' '.$errorMessage);
         }
     }
 }

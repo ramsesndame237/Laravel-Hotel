@@ -96,4 +96,11 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 });
 
+Route::get('/lang/{locale}', function (string $locale) {
+    abort_unless(in_array($locale, config('app.available_locales')), 404);
+    session(['locale' => $locale]);
+
+    return redirect()->back();
+})->name('lang.switch');
+
 Route::redirect('/', '/dashboard');

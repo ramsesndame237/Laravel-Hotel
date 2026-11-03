@@ -1,5 +1,5 @@
 @extends('template.master')
-@section('title', 'Payment')
+@section('title', __('Payment'))
 @section('content')
 
     <div class="card shadow-sm border">
@@ -8,12 +8,12 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Room</th>
-                        <th scope="col">Paid Off</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">At</th>
-                        <th scope="col">Served By</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">{{ __('Room') }}</th>
+                        <th scope="col">{{ __('Paid Off') }}</th>
+                        <th scope="col">{{ __('Status') }}</th>
+                        <th scope="col">{{ __('At') }}</th>
+                        <th scope="col">{{ __('Served By') }}</th>
+                        <th scope="col">{{ __('Action') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,11 +26,11 @@
                             <td>{{ $payment->status }}</td>
                             <td>{{ Helper::dateFormatTime($payment->created_at) }}</td>
                             <td>{{ $payment->user->name }}</td>
-                            <td> <a href="{{ route('payment.invoice', $payment->id) }}">Invoice</a> </td>
+                            <td> <a href="{{ route('payment.invoice', $payment->id) }}">{{ __('Invoice') }}</a> </td>
                         </tr>
                     @empty
                         <tr class="text-center">
-                            <td colspan="6">Theres no payment found on database</td>
+                            <td colspan="6">{{ __('Theres no payment found on database') }}</td>
                         </tr>
                     @endforelse
                 </tbody>
